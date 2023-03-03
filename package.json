@@ -1,0 +1,26 @@
+{
+  "name": "jacobs-logo-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "dest": "dest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobgoreham/jacobs-logo-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jacobgoreham/jacobs-logo-generator/issues"
+  },
+  "homepage": "https://github.com/jacobgoreham/jacobs-logo-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "jest": "^29.4.3"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
