@@ -1,9 +1,9 @@
 const filesystem = require("./node_modules/graceful-fs/graceful-fs");
 const inquirer = require("inquirer");
 const { Circle, Square, Triangle } = require("./dest/shapes");
-// Imports the graceful-fs, inquirer, Circle, Square, and Triangle modules.
-// Defines a Svg class that has a constructor with three methods for rendering and setting the text and shape elements in the SVG string.
+// imports
 
+//create svg class
 class Svg {
   constructor() {
     this.textElement = "";
@@ -13,8 +13,6 @@ class Svg {
     return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="300" height="200">${this.shapeElement}${this.textElement}</svg>`;
   }
 
-  //<circle cx="50%" cy="50%" r="100" height="100%" width="100%" fill="Black"></circle>
-
   setTextElement(text, color) {
     this.textElement = `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${color}">${text}</text>`;
   }
@@ -23,8 +21,7 @@ class Svg {
   }
 }
 
-// Defines array of 'questions' using the 'inquirer' library with the following questions.
-// Each question is an object that specifies the properties of TEXT, TEXT COLOR, SHAPE COLOR, and Pixel Image.
+//arrray of questions that uses the inquirer library
 const questions = [
   {
     type: "input",
@@ -49,7 +46,7 @@ const questions = [
   },
 ];
 
-// Function to write data to file
+// write data to file
 function writeToFile(fileName, data) {
   console.log("Writing [" + data + "] to file [" + fileName + "]");
   filesystem.writeFile(fileName, data, function (err) {
@@ -65,29 +62,29 @@ async function init() {
   var svgString = "";
   var svg_file = "logo.svg";
 
-  // Prompt the user for answers
+  // prompts answers
   const answers = await inquirer.prompt(questions);
 
   //user text
   var user_text = "";
   if (answers.text.length > 0 && answers.text.length < 4) {
-    // 1-3 chars, valid entry
+    // 1-3 valid entry
     user_text = answers.text;
   } else {
-    // 0 or 4+ chars, invalid entry
+    // 0 or 4+, invalid entry
     console.log(
       "Invalid user text field detected! Please enter 1-3 Characters, no more and no less"
     );
     return;
   }
   console.log("User text: [" + user_text + "]");
-  //user font color
+
   user_font_color = answers["text-color"];
   console.log("User font color: [" + user_font_color + "]");
-  //user shape color
+
   user_shape_color = answers.shape;
   console.log("User shape color: [" + user_shape_color + "]");
-  //user shape type
+
   let user_shape_type = answers["pixel-image"];
   console.log("User entered shape = [" + user_shape_type + "]");
 
@@ -107,7 +104,7 @@ async function init() {
   }
   user_shape.setColor(user_shape_color);
 
-  // Create a new Svg instance and add the shape and text elements to it
+  //new svg and assigns new logo
   var svg = new Svg();
   svg.setTextElement(user_text, user_font_color);
   svg.setShapeElement(user_shape);
