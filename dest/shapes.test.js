@@ -1,8 +1,8 @@
 const { Circle, Square, Triangle } = require("./shapes");
-// Imports the Circle, Square, and Triangle shape classes from the 'shapes.js' module and defines a test suite for the shape class.
-// The test case checks whether "Cricle, Square, and Triangle" object can be rendered correctly by calling the render method and comparing the result to an expected SVG string.
+// import shapes from shapes
+// tests if shapes render
 
-// Circle Shape
+// circle shape
 describe("Circle", () => {
   test("renders correctly", () => {
     const shape = new Circle();
@@ -13,7 +13,7 @@ describe("Circle", () => {
     );
   });
 });
-// Square Shape
+// square shape
 describe("Square", () => {
   test("renders correctly", () => {
     const shape = new Square();
@@ -24,7 +24,7 @@ describe("Square", () => {
     );
   });
 });
-// Triangle Shape
+// triangle shape
 describe("Triangle", () => {
   test("renders correctly", () => {
     const shape = new Triangle();
